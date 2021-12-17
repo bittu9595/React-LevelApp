@@ -3,10 +3,10 @@ import React from 'react';
 
 class Persons extends React.Component {
 
-    constructor(props){
-        
+    constructor(props) {
+
         super();
-        console.log('props--',props);
+        console.log('props--', props);
 
         // this.state = {
         //     basicSalary : "",
@@ -20,10 +20,26 @@ class Persons extends React.Component {
         bonusSalary: "",
         totalSalary: "",
         basicSalaryerrorMessage: "",
-        bonusSalaryerrorMessage: ""
+        bonusSalaryerrorMessage: "",
+        showPersonInfo: false,
+        employees: [
+            {
+                'id': '2399',
+                'name': 'Alex'
+            },
+            {
+                'id': '2389',
+                'name': 'Maria'
+            },
+            {
+                'id': '2359',
+                'name': 'John'
+            }
+
+        ]
 
     };
-//public method
+    //public method
     onClickHandler = (nameParam) => {
 
 
@@ -35,7 +51,14 @@ class Persons extends React.Component {
         });
     }
 
-    
+    togglePersonhandler = () => {
+        const value = this.state.showPersonInfo;
+        this.setState({
+            showPersonInfo: !value
+        });
+    }
+
+
     // setBasicSalary = (event)=> {
     //     //event.target.value
 
@@ -44,12 +67,12 @@ class Persons extends React.Component {
     //     })
     // }
 
-    setBonusSalary = (event)=> {
+    setBonusSalary = (event) => {
 
         console.log(Number(event.target.value))
 
 
-        if(!isNaN(Number(event.target.value))){
+        if (!isNaN(Number(event.target.value))) {
             this.setState({
                 bonusSalary: event.target.value,
                 bonusSalaryerrorMessage: ''
@@ -60,75 +83,28 @@ class Persons extends React.Component {
             });
         }
 
-      
+
 
     }
 
-
-    render(){
-        let disabled = (typeof(this.state.basicSalary) === "number" && typeof(this.state.bonusSalary) === "number" );
-        console.log('disabled',disabled);
-        const styleObj = {
-            border: "1px solid red"
-        }
-        return(
-            <div>
-                <h1>Employee Details</h1>
-                <div style = {styleObj}>
-                <div>
-                    <label>Enter Basic Salary</label>
-                    <input onChange = {(event)=> {
-                        if(typeof(event.target.value) === "number"){
-                        this.setState({
-                            basicSalary: event.target.value,
-                            
-                        });
-                        
-                    } else {
-                        this.setState({
-                            basicSalaryerrorMessage: "Please enter a numeric value"
-                        })
-                    }
-                    }} type = "text"/>
-                                        {this.state.basicSalaryerrorMessage}
+    onChangeHandler = (event) => {
+        console.log('event.target',event.target.value);
+        this.props.change(event.target.value);
+    }
 
 
-                </div>
-                <div>
-                    <label>Enter Bonus</label>
-                    <input onChange = {this.setBonusSalary} type = "text"/>
-                    {this.state.bonusSalaryerrorMessage}
+    render() {
 
-                </div>
+    return(
+        <div>
+<label>Enter Text</label>
+<input onChange = {this.onChangeHandler} type = "text"/>
 
-                {/* <div>
-                    <label>Enter Salary</label>
-                    <input type="text"/>
-                </div>
-                <
-                 */}
-                 <div>
-                     <button disabled = {!disabled} onClick = {this.onClickHandler}>Calculate</button>
-                 </div>
+        </div>
 
-<div Style = {{border : "1px solid cyan"}}>
-
-    <div>
-        Total Salary: {this.state.totalSalary}
-    </div>
-
-<div>
-    PF: {this.state.basicSalary * 12/100}
-</div>
-<div>
-    Tax: {this.state.totalSalary * 5/100}
-</div>
-
-</div>
-
-                </div>
-            </div>
-        )
+    )
+     
+        
     }
 
 }
