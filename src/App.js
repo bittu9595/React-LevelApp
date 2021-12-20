@@ -19,24 +19,30 @@ class App extends React.Component {
   onChangeHandler = (data)=> {
 console.log('App.js data---',data);
 
+this.setState({
+  textArray: []
+},()=> {
+  const dataArrayObj = [];
+  for(let el of [...data]){
+    const obj = {
+      id: Math.random(),
+      value: el
+    };
+    dataArrayObj.push(obj)
+  }
+  
+  console.log('datarrayobj---',dataArrayObj);
+  
+  
+  
+  this.setState({
+    textArray: dataArrayObj
+  });
+  
+});
+
 // const dataArray = [...data];
 // console.log('data array---',dataArray);
-const dataArrayObj = [];
-for(let el of [...data]){
-  const obj = {
-    id: Date.now(),
-    value: el
-  };
-  dataArrayObj.push(obj)
-}
-
-console.log('datarrayobj---',dataArrayObj);
-
-
-
-this.setState({
-  textArray: dataArrayObj
-});
 
   }
 
@@ -55,6 +61,7 @@ this.setState({
           return (
             <div key={el.id} style = {{border: '2px solid cyan',borderRadius: '2px'}}>
               <p>{el.value}</p>
+              <button>Remove</button>
             </div>
           )
         })
