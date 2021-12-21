@@ -94,6 +94,8 @@ class Persons extends React.Component {
 
 
     render() {
+        console.log('Persons.js render')
+
 
     return(
         <div>

@@ -3,10 +3,14 @@ import Persons from "./containers/Persons";
 import React from 'react';
 
 //jsx -> javascript structured xml
+//mounting -> constructor -> getDerivedStateFromProps -> render -> child render -> componentdidMount
+//updating
+//unmountng
 
 class App extends React.Component {
 
   constructor(props){
+    console.log('App.js constructor');
     super(props);
 
     this.state = {
@@ -14,6 +18,10 @@ class App extends React.Component {
     }
 
 
+  }
+
+  static getDerivedStateFromProps(){
+console.log('App getderivedstatefromprops--')
   }
 
   onChangeHandler = (data)=> {
@@ -46,8 +54,15 @@ this.setState({
 
   }
 
-  render(){
+  componentDidMount(){
+    //side effect
+    console.log(
+      'App.js Componentdidmount'
+    );
+  }
 
+  render(){
+console.log('App.js render')
   
 
   return (
