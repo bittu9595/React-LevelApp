@@ -57,7 +57,9 @@ class Persons extends React.Component {
             showPersonInfo: !value
         });
     }
-
+componentWillUnmount(){
+    console.log('Person.js unmount')
+}
 
     // setBasicSalary = (event)=> {
     //     //event.target.value

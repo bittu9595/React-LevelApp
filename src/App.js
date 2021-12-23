@@ -4,8 +4,8 @@ import React from 'react';
 
 //jsx -> javascript structured xml
 //mounting -> constructor -> getDerivedStateFromProps -> render -> child render -> componentdidMount
-//updating
-//unmountng
+//updating -> getderivedstatefromprops -> shouldcomponentupdate -> getsnapshotbeforeupdate -> render -> child render -> componentdidupdate
+//unmountng -> componentwillunmount
 
 class App extends React.Component {
 
@@ -14,15 +14,35 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      textArray : []
-    }
+      textArray : [],
+      showPerson: false
+    };
 
 
   }
 
-  static getDerivedStateFromProps(){
+  static getDerivedStateFromProps(prevProps,prevState){
 console.log('App getderivedstatefromprops--')
+return prevProps
   }
+
+  shouldComponentUpdate(nextProps,nextState){
+    console.log('App.js should componentupdate');
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(){
+    console.log('App.js getsnapshotbeforeupdate---');
+    return {
+      'snapshot': 'snapdata'
+    }
+  }
+
+  componentDidUpdate(prevProps,prevState,snapshot){
+console.log('App.js Componentdidupdate',snapshot);
+  }
+
+ 
 
   onChangeHandler = (data)=> {
 console.log('App.js data---',data);
@@ -67,8 +87,18 @@ console.log('App.js render')
 
   return (
     <div className="App">
+      <button onClick = {()=> {
+        const value = this.state.showPerson
+        this.setState({
+          showPerson: !value
+        })
+      }} >Toggle</button>
+
+      {
+        this.state.showPerson &&  <Persons change = {this.onChangeHandler} />
+
+      }
      
-      <Persons change = {this.onChangeHandler} />
       {/* <Persons salary = "$50000" designation = "Program Director" ></Persons> */}
 
       {
