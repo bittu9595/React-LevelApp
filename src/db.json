@@ -1,0 +1,30 @@
+{
+    "electronics": [
+        {
+            "id": "aahhh",
+            "title": "Apple TV"
+        },
+        {
+            "id": "aahhhjkjjk",
+            "title": "Apple Mobile"
+        },
+        {
+            "id": "aahhhoio",
+            "title": "Apple MAC"
+        }
+    ],
+    "Fashion": [
+        {
+            "id": "aahhhkkj",
+            "title": "Jeans"
+        },
+        {
+            "id": "iuiuiu",
+            "title": "Shirts"
+        },
+        {
+            "id": "IOOIOI",
+            "title": "Jackets"
+        }
+    ]
+}

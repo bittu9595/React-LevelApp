@@ -1,6 +1,14 @@
 import './App.css';
 import Persons from "./containers/Persons";
 import React from 'react';
+import Cockpit from './containers/Cockpit';
+import Header from './containers/Header';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './containers/Dashboard';
+import Signup from './containers/Signup';
+import Footer from './containers/Footer';
+import ProductCardInfo from './containers/Producardinfo';
+import ProductCardQueryParams from './containers/Productcardinfowithqueryparams';
 
 //jsx -> javascript structured xml
 //mounting -> constructor -> getDerivedStateFromProps -> render -> child render -> componentdidMount
@@ -82,36 +90,38 @@ this.setState({
   }
 
   render(){
+    console.log('App props',this.props);
+
+    const obj = {
+      name: 'abc',
+      age: 23
+    };
 console.log('App.js render')
   
 
   return (
     <div className="App">
-      <button onClick = {()=> {
-        const value = this.state.showPerson
-        this.setState({
-          showPerson: !value
-        })
-      }} >Toggle</button>
+      <div className='App-header'>
+      <Header/>
 
-      {
-        this.state.showPerson &&  <Persons change = {this.onChangeHandler} />
+      </div>
 
-      }
-     
-      {/* <Persons salary = "$50000" designation = "Program Director" ></Persons> */}
+<div className='App-layout' id ="layout">
+<Routes>
+        <Route path = "/" element = {<Dashboard/>} />
 
-      {
-        this.state.textArray.map((el) => {
-          return (
-            <div key={el.id} style = {{border: '2px solid cyan',borderRadius: '2px'}}>
-              <p>{el.value}</p>
-              <button>Remove</button>
-            </div>
-          )
-        })
-      }
+        <Route path = "/persons" element = {<Persons/>} />
+        <Route path = "/signup" element = {<Signup/>} />
+        <Route path = '/productcard/:category' element = {<ProductCardInfo/>}/>
+        <Route path = '/productcardqueryparams' element = {<ProductCardQueryParams/>}/>
 
+
+      </Routes>
+</div>
+    <div className='App-footer'>
+    <Footer/>
+
+    </div>
     </div>
   );
 }
