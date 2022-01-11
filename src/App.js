@@ -1,14 +1,14 @@
 import './App.css';
 import Persons from "./containers/Persons";
 import React from 'react';
-import Cockpit from './containers/Cockpit';
 import Header from './containers/Header';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import {Route, Routes } from 'react-router-dom';
 import Dashboard from './containers/Dashboard';
 import Signup from './containers/Signup';
 import Footer from './containers/Footer';
 import ProductCardInfo from './containers/Producardinfo';
 import ProductCardQueryParams from './containers/Productcardinfowithqueryparams';
+import Login from './containers/Login';
 
 //jsx -> javascript structured xml
 //mounting -> constructor -> getDerivedStateFromProps -> render -> child render -> componentdidMount
@@ -112,6 +112,8 @@ console.log('App.js render')
 
         <Route path = "/persons" element = {<Persons/>} />
         <Route path = "/signup" element = {<Signup/>} />
+        <Route path = "/login" element = {<Login/>} />
+
         <Route path = '/productcard/:category' element = {<ProductCardInfo/>}/>
         <Route path = '/productcardqueryparams' element = {<ProductCardQueryParams/>}/>
 
