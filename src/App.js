@@ -9,6 +9,8 @@ import Footer from './containers/Footer';
 import ProductCardInfo from './containers/Producardinfo';
 import ProductCardQueryParams from './containers/Productcardinfowithqueryparams';
 import Login from './containers/Login';
+import Profile from './containers/Profile';
+import ToDoData from './containers/Tododata';
 
 //jsx -> javascript structured xml
 //mounting -> constructor -> getDerivedStateFromProps -> render -> child render -> componentdidMount
@@ -109,15 +111,13 @@ console.log('App.js render')
 <div className='App-layout' id ="layout">
 <Routes>
         <Route path = "/" element = {<Dashboard/>} />
-
         <Route path = "/persons" element = {<Persons/>} />
         <Route path = "/signup" element = {<Signup/>} />
         <Route path = "/login" element = {<Login/>} />
-
         <Route path = '/productcard/:category' element = {<ProductCardInfo/>}/>
         <Route path = '/productcardqueryparams' element = {<ProductCardQueryParams/>}/>
-
-
+        <Route path = '/profile' element = {<Profile/>}/>
+        <Route path = '/tododata' element = {<ToDoData/>}/>
       </Routes>
 </div>
     <div className='App-footer'>

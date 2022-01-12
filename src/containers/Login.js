@@ -23,6 +23,7 @@ const Login = (props)=> {
         console.log('response----',response);
         const profileData = response.profileObj;
         dispatch(setProfileData(profileData));
+        navigate('/');
         alert('google login successfull');
     }
 
